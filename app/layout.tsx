@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const tahoma = localFont({
+  src: [
+    {
+      path: './fonts/tahoma.ttf',
+      weight: '400'
+    },
+    {
+      path: './fonts/tahomabd.ttf',
+      weight: '700'
+    }
+  ]
+})
 
 export const metadata: Metadata = {
   title: "XP GPT",
@@ -16,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={tahoma.className}>{children}</body>
     </html>
   );
 }
