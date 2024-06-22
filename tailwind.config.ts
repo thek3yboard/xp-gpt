@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -17,9 +18,23 @@ const config: Config = {
         "celeste": "#0c8dea",
         "azul": "#245edb",
         "azul-oscuro": "rgb(27 58 150)"
-      }
+      },
+      textShadow: {
+        DEFAULT: '1px 1px #0f1089',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') }
+      )
+    }),
+  ],
 };
 export default config;
