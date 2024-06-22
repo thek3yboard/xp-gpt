@@ -58,10 +58,13 @@ export default function Home() {
           <div className="h-full w-full rounded-t-lg bg-azul border-x border-y border-azul-oscuro">
             <div className="h-[5%] w-[100%] mb-[0.2%] rounded-t-lg 
             bg-gradient-to-b from-0% from-azul via-10% via-celeste to-20% to-azul">
-              <div className="flex justify-end items-end h-full w-full pr-[0.15rem] ">
-                <Image src={minimizeButton} alt="Windows XP minimize button" className="flex h-[80%] w-[2%]"></Image>
-                <Image src={maximizeButton} alt="Windows XP maximize button" className="flex h-[80%] w-[2%]"></Image>
-                <Image src={closeButton} alt="Windows XP close button" className="flex h-[80%] w-[2%] mr-[2px]"></Image>
+              <div className="flex h-full w-full pr-[0.15rem]">
+                <span className="flex pl-1 pt-1 items-center text-slate-100 text-[14px] w-[10%] text-shadow">Chat GPT</span>
+                <div className="flex h-full w-[90%] justify-end items-end">
+                  <Image src={minimizeButton} alt="Windows XP minimize button" className="flex h-[80%] w-[2%]"></Image>
+                  <Image src={maximizeButton} alt="Windows XP maximize button" className="flex h-[80%] w-[2%]"></Image>
+                  <Image src={closeButton} alt="Windows XP close button" className="flex h-[80%] w-[2%] mr-[2px]"></Image>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-end items-center h-[94.3%] w-[99.6%] bg-zinc-300 ml-[0.2%] mb-[0.5%] border-t-2 border-b border-x border-azul-oscuro">
