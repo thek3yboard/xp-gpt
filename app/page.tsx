@@ -61,18 +61,18 @@ export default function Home() {
                 <button aria-label="Close"></button>
               </div>
             </div>
-            <div className="window-body !h-[calc(100%-30px)] !ml-[3px] !mr-[3px] !mt-[1px] !mb-[0px]">
-              <div className="grid h-full w-full">
-                <ul className="grid h-full w-full self-start overflow-y-scroll">
-                  {/* { messages.length > 0 &&
+            <div className="flex flex-col window-body !h-[calc(100%-30px)] !ml-[3px] !mr-[3px] !mt-[0px] ">
+              <div className="h-full w-full overflow-y-scroll">
+                <ul className="grid w-full self-start">
+                  { messages.length > 0 &&
                     messages.map((message, i) => 
                       <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
                         {message}
                       </li>
                     )
-                  } */}
+                  }
 
-                  <li className="justify-self-end bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore expedita, maiores amet eos et harum autem, aliquam in, officiis cum sint? Laborum, vel illo. Repudiandae et quibusdam perspiciatis vero quisquam.</li>
+                  {/* <li className="justify-self-end bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore expedita, maiores amet eos et harum autem, aliquam in, officiis cum sint? Laborum, vel illo. Repudiandae et quibusdam perspiciatis vero quisquam.</li>
                   <li className="justify-self-start bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nostrum impedit pariatur voluptatum laboriosam voluptatibus nisi quibusdam in fugiat velit, exercitationem perferendis ratione, dolores laborum quisquam quo culpa, maxime reiciendis!</li>
                   <li className="justify-self-end bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, perspiciatis itaque dolorem unde, eum mollitia nisi fuga repellat earum accusamus voluptatibus magnam laborum. Nobis laudantium perferendis, optio suscipit neque cum?</li>
                   <li className="justify-self-start bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, perspiciatis itaque dolorem unde, eum mollitia nisi fuga repellat earum accusamus voluptatibus magnam laborum. Nobis laudantium perferendis, optio suscipit neque cum?</li>
@@ -81,14 +81,12 @@ export default function Home() {
                   <li className="justify-self-end bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repellendus repudiandae minima rem culpa. Repudiandae iure libero minima. Quo tenetur cumque incidunt rem eligendi molestiae dolore facilis porro non? Dolorem!</li>
                   <li className="justify-self-start bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit laboriosam quaerat, natus adipisci corporis molestiae cumque vel repudiandae sapiente! Veritatis perspiciatis dignissimos mollitia odit provident doloribus perferendis est, quaerat assumenda!</li>
                   <li className="justify-self-end bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repellendus repudiandae minima rem culpa. Repudiandae iure libero minima. Quo tenetur cumque incidunt rem eligendi molestiae dolore facilis porro non? Dolorem!</li>
-                  <li className="justify-self-start bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit laboriosam quaerat, natus adipisci corporis molestiae cumque vel repudiandae sapiente! Veritatis perspiciatis dignissimos mollitia odit provident doloribus perferendis est, quaerat assumenda!</li>
+                  <li className="justify-self-start bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit laboriosam quaerat, natus adipisci corporis molestiae cumque vel repudiandae sapiente! Veritatis perspiciatis dignissimos mollitia odit provident doloribus perferendis est, quaerat assumenda!</li> */}
                 </ul>
-                <div className="grid self-end my-1">
-                  <div className="flex mx-1">
-                      <input type="text" className="flex h-6 w-[90%]" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={(e) => handleKeyDown(e.key)} />
-                      <button className="inline-flex h-6 w-[10%] ml-1 items-center justify-center" onClick={handleClick}>Enviar</button>
-                  </div>
-                </div>
+              </div>
+              <div className="flex justify-end mx-1 my-1">
+                <input type="text" className="flex w-[90%]" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={(e) => handleKeyDown(e.key)} />
+                <button className="inline-flex w-[10%] ml-1 items-center justify-center" onClick={handleClick}>Enviar</button>
               </div>
             </div>
           </div>
