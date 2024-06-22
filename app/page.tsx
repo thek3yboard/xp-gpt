@@ -65,8 +65,8 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col justify-end items-center h-[94.3%] w-[99.6%] bg-zinc-300 ml-[0.2%] mb-[0.5%] border-t-2 border-b border-x border-azul-oscuro">
-                <div className="grid h-full w-full overflow-y-scroll">
-                  <ul className="grid gap-4 self-start">
+                <div className="grid h-full w-full overflow-y-scroll mt-1">
+                  <ul className="grid self-start">
                   { messages.length > 0 &&
                     messages.map((message, i) => 
                       <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
