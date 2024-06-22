@@ -25,12 +25,12 @@ export default function Home() {
   async function handleSendInput() {
     setMessages(prevState => [ ...prevState, input ]);
     messagesLengthRef.current += 1;
+    setInput('');
     let res = await sendMessageToOpenAI(input);
     if(res !== null) {
       setMessages(prevState => [ ...prevState, res ]);
       messagesLengthRef.current += 1;
     }
-    setInput('');
   }
 
   function handleKeyDown(key: string) {
