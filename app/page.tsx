@@ -69,7 +69,7 @@ export default function Home() {
                   <ul className="grid gap-4 self-start">
                   { messages.length > 0 &&
                     messages.map((message, i) => 
-                      <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
+                      <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
                         {message}
                       </li>
                     )
