@@ -8,6 +8,7 @@ import { sendMessageToOpenAI } from '@/app/utils/openai';
 
 export default function Home() {
   const [input, setInput] = useState<string>('');
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [messages, setMessages] = useState<string[]>([]);
   const messagesLengthRef = useRef<number>(0);
 
@@ -20,14 +21,17 @@ export default function Home() {
   }
   
   async function handleSendInput() {
+    if(input === '') return;
     setMessages(prevState => [ ...prevState, input ]);
     messagesLengthRef.current += 1;
     setInput('');
+    setIsDisabled(prevState => !prevState);
     let res = await sendMessageToOpenAI(input);
     if(res !== null) {
       setMessages(prevState => [ ...prevState, res ]);
       messagesLengthRef.current += 1;
     }
+    setIsDisabled(prevState => !prevState);
   }
 
   function handleKeyDown(key: string) {
@@ -86,7 +90,7 @@ export default function Home() {
               </div>
               <div className="flex justify-end mx-1 my-1">
                 <input type="text" className="flex w-[90%]" value={input} onChange={(e) => handleChange(e.target.value)} onKeyDown={(e) => handleKeyDown(e.key)} />
-                <button className="inline-flex w-[10%] ml-1 items-center justify-center" onClick={handleClick}>Enviar</button>
+                <button className="inline-flex w-[10%] ml-1 items-center justify-center" disabled={isDisabled} onClick={handleClick}>Enviar</button>
               </div>
             </div>
           </div>
