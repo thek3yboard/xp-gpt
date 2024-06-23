@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <main className="h-screen">
       <Image src={backgroundImage} alt="Windows XP background image" className="h-screen"></Image>
-        <div className="fixed top-[15%] left-[20%] h-[60%] w-[60%] shadow-[11px_15px_30px_-5px_rgba(0,0,0,0.75)]">
+        <div className="fixed max-lg:top-[3%] max-lg:left-[5%] max-lg:h-[90%] max-lg:w-[90%] lg:top-[15%] lg:left-[20%] lg:h-[60%] lg:w-[60%] shadow-[11px_15px_30px_-5px_rgba(0,0,0,0.75)]">
           <div className="window h-full w-full">
             <div className="title-bar !h-[30px]">
               <div className="title-bar-text">Chat GPT</div>
