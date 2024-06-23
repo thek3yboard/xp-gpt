@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <main className="h-screen">
-      <Image src={backgroundImage} alt="Windows XP background image" className="h-screen"></Image>
+      <Image src={backgroundImage} alt="Windows XP background image" className="h-screen overflow-hidden"></Image>
         <div className="fixed max-lg:top-[3%] max-lg:left-[5%] max-lg:h-[90%] max-lg:w-[90%] lg:top-[15%] lg:left-[20%] lg:h-[60%] lg:w-[60%] shadow-[11px_15px_30px_-5px_rgba(0,0,0,0.75)]">
           <div className="window h-full w-full">
             <div className="title-bar !h-[30px]">
@@ -66,7 +66,7 @@ export default function Home() {
                 <ul className="grid w-full self-start">
                   { messages.length > 0 &&
                     messages.map((message, i) => 
-                      <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
+                      <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit max-lg:max-w-60 lg:max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
                         {message}
                       </li>
                     )
@@ -91,7 +91,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <footer className="w-full h-8 flex flex-row absolute bottom-0 left-0 bg-gradient-to-b from-0% from-azul via-10% via-celeste
+        <footer className="w-full h-8 flex flex-row fixed bottom-0 left-0 bg-gradient-to-b from-0% from-azul via-10% via-celeste
         to-20% to-azul">
           <Image src={windowsButton} alt="Windows XP menu button"/>
         </footer>
