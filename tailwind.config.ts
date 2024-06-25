@@ -17,7 +17,8 @@ const config: Config = {
       colors: {
         "celeste": "#0c8dea",
         "azul": "#245edb",
-        "azul-oscuro": "rgb(27 58 150)"
+        "azul-oscuro": "rgb(27 58 150)",
+        "azul-chat": "#1f498c",
       },
       textShadow: {
         DEFAULT: '1px 1px #0f1089',
