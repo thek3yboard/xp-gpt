@@ -70,7 +70,7 @@ export default function Home() {
                 <ul className="grid w-full self-start">
                   { messages.length > 0 &&
                     messages.map((message, i) => 
-                      <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-md w-fit max-lg:max-w-60 lg:max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start">
+                      <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-sm w-fit max-lg:max-w-60 lg:max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start even:bg-azul-chat">
                         {message}
                       </li>
                     )
