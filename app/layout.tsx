@@ -3,15 +3,11 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import "xp.css/dist/XP.css";
 
-const tahoma = localFont({
+const msSansSerif = localFont({
   src: [
     {
-      path: './fonts/tahoma.ttf',
+      path: './fonts/ms-sans-serif-1.ttf',
       weight: '400'
-    },
-    {
-      path: './fonts/tahomabd.ttf',
-      weight: '700'
     }
   ]
 })
@@ -28,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={tahoma.className}>{children}</body>
+      <body className={msSansSerif.className}>{children}</body>
     </html>
   );
 }
