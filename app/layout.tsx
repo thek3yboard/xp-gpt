@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={msSansSerif.className}>{children}</body>
+      <body className={`${msSansSerif.className} antialiased`}>{children}</body>
     </html>
   );
 }
