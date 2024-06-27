@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, SetStateAction } from 'react';
 import Image from "next/image";
 import backgroundImage from '@/app/assets/background.jpg';
 import windowsButton from '@/app/assets/menu-button.png';
-import { sendMessageToOpenAI } from '@/app/utils/openai';
+import { sendMessageToOpenAI } from '@/app/lib/openai';
 
 export default function Home() {
   const [input, setInput] = useState<string>('');
