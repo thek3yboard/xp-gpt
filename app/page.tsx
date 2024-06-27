@@ -5,6 +5,7 @@ import Image from "next/image";
 import backgroundImage from '@/app/assets/background.jpg';
 import windowsButton from '@/app/assets/menu-button.png';
 import { sendMessageToOpenAI } from '@/app/lib/openai';
+import { TextWithLineBreaks } from '@/app/utils/TextWithLineBreaks';
 
 export default function Home() {
   const [input, setInput] = useState<string>('');
@@ -26,9 +27,11 @@ export default function Home() {
     messagesLengthRef.current += 1;
     setInput('');
     setIsDisabled(prevState => !prevState);
-    let res = await sendMessageToOpenAI(input);
+    const res = await sendMessageToOpenAI(input);
+    // resObj = { answer: Chat GPT answer }
+    const resObj = JSON.parse(res!);
     if(res !== null) {
-      setMessages(prevState => [ ...prevState, res ]);
+      setMessages(prevState => [ ...prevState, resObj.answer ]);
       messagesLengthRef.current += 1;
     }
     setIsDisabled(prevState => !prevState);
@@ -71,7 +74,7 @@ export default function Home() {
                   { messages.length > 0 &&
                     messages.map((message, i) => 
                       <li id={String(i)} key={i} className="bg-gray-700 text-white rounded-sm w-fit max-lg:max-w-60 lg:max-w-xl h-fit p-3 m-2 odd:justify-self-end even:justify-self-start even:bg-azul-chat">
-                        {message}
+                        <TextWithLineBreaks text={message} />
                       </li>
                     )
                   }
