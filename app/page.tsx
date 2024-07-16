@@ -34,7 +34,7 @@ export default function App() {
   }
 
   function handlePointerDown(e: PointerEvent) {
-    const target = (e.target as HTMLElement);
+    const target = (e.target as HTMLDivElement);
     target.setPointerCapture(e.pointerId);
     setLastCoordinates({
       x: e.clientX,
