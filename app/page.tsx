@@ -1,13 +1,22 @@
 'use client';
 
-import React, { useState, useEffect, useRef, SetStateAction } from 'react';
+import React, { useState, useEffect, useRef, SetStateAction, PointerEvent } from 'react';
 import Image from "next/image";
 import backgroundImage from '@/app/assets/background.jpg';
 import windowsButton from '@/app/assets/menu-button.png';
 import { sendMessageToOpenAI } from '@/app/lib/openai';
 import { TextWithLineBreaks } from '@/app/utils/TextWithLineBreaks';
 
-export default function Home() {
+type Coordinates = { x: number, y: number } | null;
+
+const initialPosition = {
+  x: 0,
+  y: 0
+};
+
+export default function App() {
+  const [position, setPosition] = useState<Coordinates>(initialPosition);
+  const [lastCoordinates, setLastCoordinates] = useState<Coordinates>(null);
   const [input, setInput] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [messages, setMessages] = useState<string[]>([]);
@@ -16,6 +25,38 @@ export default function Home() {
   useEffect(() => {
     scrollToLastMessage();
   }, [messages]);
+
+  function handleMove(dx: number, dy: number) {
+    setPosition({
+      x: position!.x + dx,
+      y: position!.y + dy
+    });
+  }
+
+  function handlePointerDown(e: PointerEvent) {
+    const target = (e.target as HTMLElement);
+    target.setPointerCapture(e.pointerId);
+    setLastCoordinates({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }
+
+  function handlePointerMove(e: PointerEvent) {
+    if (lastCoordinates) {
+      setLastCoordinates({
+        x: e.clientX,
+        y: e.clientY,
+      });
+      const dx = e.clientX - lastCoordinates.x;
+      const dy = e.clientY - lastCoordinates.y;
+      handleMove(dx, dy);
+    }
+  }
+
+  function handlePointerUp(e: PointerEvent) {
+    setLastCoordinates(null);
+  }
 
   function handleChange(value: SetStateAction<string>) {
     setInput(value);
@@ -58,15 +99,19 @@ export default function Home() {
   return (
     <main className="h-screen">
       <Image src={backgroundImage} alt="Windows XP background image" className="h-screen"></Image>
-        <div className="fixed max-lg:top-[3%] max-lg:left-[5%] max-lg:h-[90%] max-lg:w-[90%] lg:top-[15%] lg:left-[20%] lg:h-[60%] lg:w-[60%] shadow-[11px_15px_30px_-5px_rgba(0,0,0,0.75)]">
+        <div style={{ transform: `translate(${position!.x}px, ${position!.y}px)` }} className="fixed max-lg:top-[3%] max-lg:left-[5%] max-lg:h-[90%] max-lg:w-[90%] lg:top-[15%] lg:left-[20%] lg:h-[60%] lg:w-[60%] shadow-[11px_15px_30px_-5px_rgba(0,0,0,0.75)]">
           <div className="window h-full w-full">
-            <div className="title-bar !h-[30px]">
-              <div className="title-bar-text">Chat GPT</div>
-              <div className="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize"></button>
-                <button aria-label="Close"></button>
-              </div>
+            <div
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              className="title-bar !h-[30px]">
+                <div className="title-bar-text">Chat GPT</div>
+                <div className="title-bar-controls">
+                  <button aria-label="Minimize"></button>
+                  <button aria-label="Maximize"></button>
+                  <button aria-label="Close"></button>
+                </div>
             </div>
             <div className="flex flex-col window-body !h-[calc(100%-30px)] !ml-[3px] !mr-[3px] !mt-[0px] ">
               <div className="h-full w-full overflow-y-scroll">
